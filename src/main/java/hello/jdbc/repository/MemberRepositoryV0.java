@@ -75,6 +75,57 @@ public class MemberRepositoryV0 {
         }
     }
 
+    public void update(String memberId, int money) throws SQLException {
+        String sql = "update member set money=? where member_id=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try{
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+
+            pstmt.setInt(1, money);
+            pstmt.setString(2, memberId);
+            final int resultSize = pstmt.executeUpdate();
+
+            log.info("resultSize={}", resultSize);
+
+        } catch (SQLException e) {
+            log.info("db error ", e);
+            throw e;
+        } finally {
+            // 사용한 자원(리소스) 정리
+            close(con, pstmt, rs);
+        }
+    }
+
+    public void delete(String memberId) throws SQLException {
+        String sql = "delete from member where member_id=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try{
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+
+            pstmt.setString(1, memberId);
+            final int resultSize = pstmt.executeUpdate();
+
+            log.info("resultSize={}", resultSize);
+
+        } catch (SQLException e) {
+            log.info("db error ", e);
+            throw e;
+        } finally {
+            // 사용한 자원(리소스) 정리
+            close(con, pstmt, rs);
+        }
+    }
+
     private void close(Connection con, Statement stmt, ResultSet rs) {
         if (rs != null) {
             try {
