@@ -4,6 +4,7 @@ import hello.jdbc.domain.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.JdbcUtils;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -14,6 +15,7 @@ import java.util.NoSuchElementException;
  * JDBC - ConnectionParam
  */
 @Slf4j
+@Repository
 public class MemberRepositoryV2 {
 
     private final DataSource dataSource;

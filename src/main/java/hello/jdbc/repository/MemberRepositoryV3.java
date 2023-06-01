@@ -20,7 +20,6 @@ import java.util.NoSuchElementException;
  * DataSourceUtils.releaseConnection()
  */
 @Slf4j
-@Repository
 public class MemberRepositoryV3 {
 
     private final DataSource dataSource;
