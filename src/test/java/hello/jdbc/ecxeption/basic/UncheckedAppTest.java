@@ -23,6 +23,17 @@ public class UncheckedAppTest {
 
     }
 
+    @Test
+    void printEx() {
+        Controller controller = new Controller();
+        try {
+            controller.request();
+        } catch (Exception e) {
+//            e.printStackTrace(); -> 좋지 않은 방법
+            log.info("ex", e);
+        }
+    }
+
     static class Controller {
         Service service = new Service();
 
