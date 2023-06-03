@@ -44,7 +44,6 @@ public class MemberRepositoryV5 implements MemberRepository{
             return member;
         };
     }
-
     @Override
     public void update(String memberId, int money) {
         String sql = "update member set money=? where member_id=?";
